@@ -12,7 +12,7 @@ const Atc = (page) => {
 
                     if (price.textContent != 'Rp') {
                         payBtn = document.querySelector('.page-checkout-place-order-section__button');
-                        // payBtn.click();
+                        payBtn.click();
                         res(price.textContent);
                         clearInterval(finding);
                     }

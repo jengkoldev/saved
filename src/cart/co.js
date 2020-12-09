@@ -6,7 +6,7 @@ const Co = (page, cart) => {
 
         await page.evaluate(() => {
             return new Promise(function (res, rej) {
-                let targetName = 'Soul Ultra Wireless Bluetooth Headphone Over Ear Bass'.toLowerCase().replace(/[^a-z]/g, '');
+                let targetName = '(Hanya di Shopee) Simbadda CST 600N Bazooka Mini Portable Bluetooth Speaker'.toLowerCase().replace(/[^a-z]/g, '');
                 let productCartNames = document.querySelectorAll('._3OP3bk');
                 let productCartNameSizes = productCartNames.length;
 

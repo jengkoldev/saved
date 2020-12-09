@@ -28,15 +28,15 @@ const App = async () => {
     const productP = await browser.newPage();
     const cartP = await browser.newPage();
 
-    await productP.goto(target.link2, { waitUntil: 'domcontentloaded' }); // goto product
+    await productP.goto(target.link, { waitUntil: 'domcontentloaded' }); // goto product
     await cartP.goto(target.cart, { waitUntil: 'domcontentloaded' }); // goto cart
 
     // timer
-    await Timer('49:50');
+    await Timer('00:00');
 
     // reload the page
     console.time('reload')
-    await productP.goto(target.link2, { waitUntil: 'domcontentloaded' });    
+    await productP.goto(target.link, { waitUntil: 'domcontentloaded' });    
     console.timeEnd('reload')
 
     /**
