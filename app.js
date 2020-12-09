@@ -33,30 +33,45 @@ const App = async () => {
     await cartP.goto(target.cart, { waitUntil: 'domcontentloaded' }); // goto cart
 
     // timer
-    await Timer('40:48');
+    await Timer('41:19');
 
     // reload the page
     console.time('reload')
     await productP.goto(target.link, { waitUntil: 'domcontentloaded' });    
     console.timeEnd('reload')
 
+    console.time('detect')
     let res = await CheckProduct(productP); // checking product
+    console.timeEnd('detect')
 
     // reload if not ready flash sale
-    // if (res == 'soldout') {
-    //     console.time('reload')
-    //     await productP.goto(target.link, { waitUntil: 'domcontentloaded' });    
-    //     console.timeEnd('reload')
+    if (res == 'soldout' || res == 'soon') {
+        console.time('reload')
+        await productP.goto(target.link, { waitUntil: 'domcontentloaded' });    
+        console.timeEnd('reload')
 
-    //     res = await CheckProduct(productP);
-    // }
+        res = await CheckProduct(productP);
+    }
 
-    // return
+    if (res == 'soldout' || res == 'soon') {
+        console.time('reload')
+        await productP.goto(target.link, { waitUntil: 'domcontentloaded' });    
+        console.timeEnd('reload')
+
+        res = await CheckProduct(productP);
+    }
+
+    if (res == 'soldout' || res == 'soon') {
+        await browser.close();
+        return;
+    }
+
+    console.log(res)
 
     /**
      * Cart
      */
-     console.time('atc')
+    console.time('atc')
     await Atc(productP); // add to cart
     console.timeEnd('atc')
 

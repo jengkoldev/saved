@@ -2,8 +2,19 @@ const Atc = (page) => {
     return new Promise(async (resolve, reject) => {
         
         await page.evaluate(() => {
-            let targetEl = document.querySelector('.product-bottom-panel__add-to-cart');
-                targetEl.click(); // click the button
+            return new Promise(function (res, rej) {
+                let targetEl;
+
+                let finding = setInterval(function () {
+                    targetEl = document.querySelector('.product-bottom-panel__add-to-cart')
+
+                    if (targetEl != null) {
+                        res(true);
+                        clearInterval(finding);
+                        targetEl.click(); // click the button
+                    }
+                }, 100);
+            });
         });
 
         /* if use this code will not work if tab not active */

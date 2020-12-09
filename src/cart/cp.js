@@ -5,13 +5,26 @@ const Atc = (page) => {
          const response = await page.evaluate(() => {
             return new Promise((res, rej) => {
                 let targetEl;
+                let soonEl;
+                let paramEl;
 
                 let finding = setInterval(() => {
-                    targetEl = document.querySelector('.product-carousel__unavailable--sold-out');
+                    paramEl = document.querySelector('.product-bottom-panel__chat-now');
 
-                    if (targetEl != null) {
-                        res('soldout');
-                        clearInterval(finding);
+                    if (paramEl != null) {
+                        targetEl = document.querySelector('.product-carousel__unavailable--sold-out');
+                        soonEl = document.querySelector('.product-bottom-panel__coming-soon-bar');
+                        
+                        if (targetEl != null) {
+                            res('soldout');
+                            clearInterval(finding);
+                        } else if (soonEl != null) {
+                            res('soon');
+                            clearInterval(finding);
+                        } else {
+                            res('ready');
+                            clearInterval(finding);
+                        }
                     }
                 }, 100);
             });

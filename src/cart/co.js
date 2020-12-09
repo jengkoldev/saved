@@ -4,7 +4,7 @@ const Co = (page, cart) => {
         await page.goto(cart, { waitUntil: 'domcontentloaded' });
 
         /* with evaluate */
-        console.time('wait')
+        // console.time('wait')
         await page.evaluate(() => {
             return new Promise(function (res, rej) {
                 let targetEl;
@@ -19,7 +19,7 @@ const Co = (page, cart) => {
                 }, 100);
             });
         });
-        console.timeEnd('wait')
+        // console.timeEnd('wait')
 
         /* testing benchmark */
         // console.time('war')
@@ -28,7 +28,7 @@ const Co = (page, cart) => {
 
         await page.evaluate(() => {
             return new Promise(function (res, rej) {
-                let targetName = 'Nelson Saringan Teh/Kopi 8 Cm - Biru x 2 Pcs'.toLowerCase().replace(/[^a-z]/g, '');
+                let targetName = 'SanDisk Cruzer Blade CZ50 USB Flash Drive 32GB'.toLowerCase().replace(/[^a-z]/g, '');
                 let productCartNames = document.querySelectorAll('._3OP3bk');
                 let productCartNameSizes = productCartNames.length;
 
