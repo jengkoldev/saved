@@ -33,7 +33,7 @@ const App = async () => {
     await cartP.goto(target.cart, { waitUntil: 'domcontentloaded' }); // goto cart
 
     // timer
-    await Timer('16:49');
+    await Timer('19:49');
 
     // reload the page
     console.time('reload')
