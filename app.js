@@ -80,6 +80,9 @@ const App = async () => {
     console.time('pay')
     await Pay(cartP);
     console.timeEnd('pay')
+
+    await cartP.screenshot({path: './public/ss.png'});
+    await browser.close();
 }
 
 App();
