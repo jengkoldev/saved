@@ -1,0 +1,18 @@
+{
+  "name": "saved",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo welcome"
+  },
+  "dependencies": {
+    "moment-timezone": "^0.5.32",
+    "puppeteer": "^5.5.0",
+    "puppeteer-extra": "^3.1.15",
+    "puppeteer-extra-plugin-stealth": "^2.6.5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

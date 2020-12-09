@@ -1,0 +1,11 @@
+{
+    "headless": false,
+    "userDataDir": "data/wd2",
+    "args": [
+        "--no-sandbox",
+        "--user-agent='Mozilla/5.0 (Android 8.1.0; Mobile; rv:61.0) Gecko/61.0 Firefox/61.0'"
+    ],
+    "ignoreDefaultArgs": ["--enable-automation"],
+    "executablePath": "/opt/google/chrome/chrome",
+    "ignoreHTTPSErrors": true
+}
