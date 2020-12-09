@@ -33,7 +33,7 @@ const App = async () => {
     await cartP.goto(target.cart, { waitUntil: 'domcontentloaded' }); // goto cart
 
     // timer
-    await Timer('41:19');
+    await Timer('14:49');
 
     // reload the page
     console.time('reload')
@@ -65,8 +65,6 @@ const App = async () => {
         await browser.close();
         return;
     }
-
-    console.log(res)
 
     /**
      * Cart
