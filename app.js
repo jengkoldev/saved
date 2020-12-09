@@ -11,6 +11,7 @@ const Timer = require('./src/time/timer');
 const Atc = require('./src/cart/atc');
 const Co = require('./src/cart/co');
 const Pay = require('./src/cart/pay');
+const CheckProduct = require('./src/cart/cp');
 
 const App = async () => {
     const browser = await puppeteer.launch(config);
@@ -32,12 +33,25 @@ const App = async () => {
     await cartP.goto(target.cart, { waitUntil: 'domcontentloaded' }); // goto cart
 
     // timer
-    await Timer('00:00');
+    await Timer('40:48');
 
     // reload the page
     console.time('reload')
     await productP.goto(target.link, { waitUntil: 'domcontentloaded' });    
     console.timeEnd('reload')
+
+    let res = await CheckProduct(productP); // checking product
+
+    // reload if not ready flash sale
+    // if (res == 'soldout') {
+    //     console.time('reload')
+    //     await productP.goto(target.link, { waitUntil: 'domcontentloaded' });    
+    //     console.timeEnd('reload')
+
+    //     res = await CheckProduct(productP);
+    // }
+
+    // return
 
     /**
      * Cart

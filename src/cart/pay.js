@@ -20,7 +20,8 @@ const Atc = (page) => {
             });
         }); // eval
 
-         console.log(price);
+        console.log(price);
+        resolve(true);
 
     });
 }

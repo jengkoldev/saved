@@ -2,11 +2,33 @@ const Co = (page, cart) => {
     return new Promise(async (resolve, reject) => {
 
         await page.goto(cart, { waitUntil: 'domcontentloaded' });
-        await page.waitForSelector('.stardust-checkbox__input');
+
+        /* with evaluate */
+        console.time('wait')
+        await page.evaluate(() => {
+            return new Promise(function (res, rej) {
+                let targetEl;
+
+                let finding = setInterval(function () {
+                    targetEl = document.querySelector('.stardust-checkbox__input')
+
+                    if (targetEl != null) {
+                        res(true);
+                        clearInterval(finding);
+                    }
+                }, 100);
+            });
+        });
+        console.timeEnd('wait')
+
+        /* testing benchmark */
+        // console.time('war')
+        // await page.waitForSelector('.stardust-checkbox__input');
+        // console.timeEnd('war')
 
         await page.evaluate(() => {
             return new Promise(function (res, rej) {
-                let targetName = '(Hanya di Shopee) Simbadda CST 600N Bazooka Mini Portable Bluetooth Speaker'.toLowerCase().replace(/[^a-z]/g, '');
+                let targetName = 'Nelson Saringan Teh/Kopi 8 Cm - Biru x 2 Pcs'.toLowerCase().replace(/[^a-z]/g, '');
                 let productCartNames = document.querySelectorAll('._3OP3bk');
                 let productCartNameSizes = productCartNames.length;
 
@@ -19,8 +41,8 @@ const Co = (page, cart) => {
 
                         // click the checkout
                         if (cbParent.getAttribute('class').indexOf('stardust-checkbox--checked') > -1) {
-                            document.querySelector('.stardust-button--primary').click();
                             res(true);
+                            document.querySelector('.stardust-button--primary').click();
                         }
                     }
                 } // end loop

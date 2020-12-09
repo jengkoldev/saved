@@ -8,7 +8,7 @@ const timer = (time) => {
                 res('starting order');
                 clearInterval(getWaktu);
             } else {
-                // console.log(moment().tz("Asia/Jakarta").format('mm:ss'))
+                console.log(moment().tz("Asia/Jakarta").format('mm:ss'))
             }
         }, 500);
     });
